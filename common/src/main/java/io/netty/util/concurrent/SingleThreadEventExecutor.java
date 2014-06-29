@@ -58,7 +58,9 @@ public abstract class SingleThreadEventExecutor extends AbstractEventExecutor {
     };
 
     private final EventExecutorGroup parent;
+    //普通任务队列
     private final Queue<Runnable> taskQueue;
+    //定时任务队列
     final Queue<ScheduledFutureTask<?>> delayedTaskQueue = new PriorityQueue<ScheduledFutureTask<?>>();
 
     private volatile Thread thread;

@@ -27,6 +27,10 @@ import java.util.concurrent.TimeUnit;
  * to shut them down in a global fashion.
  *
  */
+/*
+ * 对原来的ExecutorService接口进行增强，提供了优雅关闭的方法
+ * 从字面意义上看，是EventExecutor的一个集合
+ */
 public interface EventExecutorGroup extends ScheduledExecutorService, Iterable<EventExecutor> {
 
     /**
