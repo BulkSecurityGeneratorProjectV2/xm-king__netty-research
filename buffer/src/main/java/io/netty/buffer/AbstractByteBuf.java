@@ -35,6 +35,7 @@ import java.nio.charset.Charset;
  */
 public abstract class AbstractByteBuf extends ByteBuf {
 
+	//用于检测对象是否泄漏
     static final ResourceLeakDetector<ByteBuf> leakDetector = new ResourceLeakDetector<ByteBuf>(ByteBuf.class);
 
     int readerIndex;
