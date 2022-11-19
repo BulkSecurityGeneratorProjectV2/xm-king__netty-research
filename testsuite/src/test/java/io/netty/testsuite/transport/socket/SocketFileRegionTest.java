@@ -30,6 +30,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -82,7 +83,7 @@ public class SocketFileRegionTest extends AbstractSocketTest {
 
     private static void testFileRegion0(
             ServerBootstrap sb, Bootstrap cb, boolean voidPromise, final boolean autoRead) throws Throwable {
-        File file = File.createTempFile("netty-", ".tmp");
+        File file = Files.createTempFile("netty-", ".tmp").toFile();
         file.deleteOnExit();
 
         FileOutputStream out = new FileOutputStream(file);

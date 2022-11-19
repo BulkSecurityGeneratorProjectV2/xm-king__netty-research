@@ -43,6 +43,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.nio.file.Files;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.logging.Level;
@@ -374,7 +375,7 @@ public class HttpUploadClient {
         } else {
             baseUri = "http://localhost:8080";
 
-            File f = File.createTempFile("upload", ".txt");
+            File f = Files.createTempFile("upload", ".txt").toFile();
             BufferedWriter bw = new BufferedWriter(new FileWriter(f));
             bw.write("Some text data in a file to be posted");
             bw.close();

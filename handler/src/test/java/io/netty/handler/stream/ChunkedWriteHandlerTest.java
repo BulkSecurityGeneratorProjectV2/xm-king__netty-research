@@ -29,6 +29,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.channels.Channels;
+import java.nio.file.Files;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import static io.netty.util.ReferenceCountUtil.*;
@@ -45,7 +46,7 @@ public class ChunkedWriteHandlerTest {
 
         FileOutputStream out = null;
         try {
-            TMP = File.createTempFile("netty-chunk-", ".tmp");
+            TMP = Files.createTempFile("netty-chunk-", ".tmp").toFile();
             TMP.deleteOnExit();
             out = new FileOutputStream(TMP);
             out.write(BYTES);

@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
+import java.nio.file.Files;
 import java.util.Locale;
 import java.util.regex.Pattern;
 
@@ -82,7 +83,7 @@ public final class NativeLibraryLoader {
             File tmpFile = null;
             boolean loaded = false;
             try {
-                tmpFile = File.createTempFile(prefix, suffix, WORKDIR);
+                tmpFile = Files.createTempFile(WORKDIR.toPath(), prefix, suffix).toFile();
                 in = url.openStream();
                 out = new FileOutputStream(tmpFile);
 

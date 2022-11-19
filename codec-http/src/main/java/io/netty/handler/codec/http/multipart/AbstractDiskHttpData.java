@@ -29,6 +29,7 @@ import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.charset.Charset;
+import java.nio.file.Files;
 
 import static io.netty.buffer.Unpooled.*;
 
@@ -87,10 +88,10 @@ public abstract class AbstractDiskHttpData extends AbstractHttpData {
         File tmpFile;
         if (getBaseDirectory() == null) {
             // create a temporary file
-            tmpFile = File.createTempFile(getPrefix(), newpostfix);
+            tmpFile = Files.createTempFile(getPrefix(), newpostfix).toFile();
         } else {
-            tmpFile = File.createTempFile(getPrefix(), newpostfix, new File(
-                    getBaseDirectory()));
+            tmpFile = Files.createTempFile(new File(
+                    getBaseDirectory()).toPath(), getPrefix(), newpostfix).toFile();
         }
         if (deleteOnExit()) {
             tmpFile.deleteOnExit();
